@@ -3,7 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-parcelize'
 apply plugin: 'kotlin-kapt'
 
-def rootCMakeLists = "CMakeLists.txt"
+def rootCMakeLists = "../CMakeLists.txt"
 def rootCMakeListsContent = file(rootCMakeLists).text
 static def grepVersionComponent(content, varname) {
     def match = content =~ /set\($varname ([0-9]+)\)/
