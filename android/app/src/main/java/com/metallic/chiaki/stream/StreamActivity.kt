@@ -104,19 +104,57 @@ class StreamActivity : AppCompatActivity(), View.OnSystemUiVisibilityChangeListe
 		viewModel.session.state.observe(this, Observer { this.stateChanged(it) })
 		adjustStreamViewAspect()
 
+		
 		if(Preferences(this).rumbleEnabled)
 		{
-			val vibrator = getSystemService(VIBRATOR_SERVICE) as Vibrator
-			viewModel.session.rumbleState.observe(this, Observer {
-				val amplitude = min(255, (it.left.toInt() + it.right.toInt()) / 2)
-				vibrator.cancel()
-				if(amplitude == 0)
-					return@Observer
-				if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
-					vibrator.vibrate(VibrationEffect.createOneShot(1000, amplitude))
-				else
-					vibrator.vibrate(1000)
-			})
+			//Vibration joystick part
+			val x = InputDevice.getDeviceIds()
+			var device: InputDevice? = null;
+			for (y in x){
+				var tmp = InputDevice.getDevice(y);
+				if (tmp.vibratorManager.vibratorIds.isNotEmpty()){
+					device = tmp;
+					//Not the best way to get the right device but it work!!
+				}
+			}
+
+			if (device  == null) {
+				val vibrator = getSystemService(VIBRATOR_SERVICE) as Vibrator
+				viewModel.session.rumbleState.observe(this, Observer {
+					val amplitude = min(255, (it.left.toInt() + it.right.toInt()) / 2)
+					vibrator.cancel()
+					if(amplitude == 0)
+						return@Observer
+					if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+						vibrator.vibrate(VibrationEffect.createOneShot(1000, amplitude))
+					else
+						vibrator.vibrate(1000)
+				})
+			}
+			else if (Build.VERSION.SDK_INT >= 31 || device  != null) {
+				viewModel.session.rumbleState.observe(this, Observer {
+					val vibratorManager = device.vibratorManager
+					val startParallel = CombinedVibration.startParallel()
+					val vibratorIds = vibratorManager.vibratorIds
+					val length: Int = vibratorIds.size
+					var i4 = 0
+					var z = false
+					while (i4 < length) {
+						val i5 = vibratorIds[i4]
+						i4++
+						val i6 = if (i5 == 0) it.left.toInt() else it.right.toInt();
+						if (i6 != 0) {
+							startParallel.addVibrator(i5, VibrationEffect.createOneShot(3000L, i6))
+							z = true
+						}
+					}
+					if (z) {
+						vibratorManager.vibrate(startParallel.combine())
+					} else {
+						vibratorManager.cancel()
+					}
+				})
+			}
 		}
 	}
 
