@@ -48,8 +48,8 @@ except:
     raise
 
 try:
-    from .proto import nanopb_pb2
-    from .proto._utils import invoke_protoc
+    from proto import nanopb_pb2
+    from proto._utils import invoke_protoc
 except TypeError:
     sys.stderr.write('''
          ****************************************************************************
