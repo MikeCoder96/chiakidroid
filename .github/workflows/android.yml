@@ -24,15 +24,17 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - uses: actions/setup-python@v4
-        with:
-          python-version: '3.9'
-          cache: 'pip' # caching pip dependencies
 
       - uses: actions/checkout@v2
       - name: Install dependencies
         run: |
+           sudo apt update
            sudo apt install libssl-dev protobuf-compiler python3-protobuf protobuf-c-compiler libprotobuf-dev libopus-dev ffmpeg libavutil-dev libevdev-dev -y
+      
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+          cache: 'pip' # caching pip dependencies
       
       # Set Current Date As Env Variable
       - name: Set current date as env variable
