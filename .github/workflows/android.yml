@@ -31,17 +31,9 @@ jobs:
       - run: pip install python3-protobuf
 
       - uses: actions/checkout@v2
-      - name: Build protobuf library
+      - name: Install protobuf library
         run: |
-           git clone https://github.com/protocolbuffers/protobuf.git
-           cd protobuf
-           git submodule update --init --recursive
-           cmake . -DCMAKE_CXX_STANDARD=14
-           cmake --build
-           cmake install
-           
-      - name: make
-        run: make
+           apt install protobuf-compiler
 
       # Set Current Date As Env Variable
       - name: Set current date as env variable
