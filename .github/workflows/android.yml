@@ -25,6 +25,9 @@ jobs:
     steps:
       - uses: actions/checkout@v1
 
+      - name: Install Protoc
+        uses: arduino/setup-protoc@v1
+
       # Set Current Date As Env Variable
       - name: Set current date as env variable
         run: echo "date_today=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
