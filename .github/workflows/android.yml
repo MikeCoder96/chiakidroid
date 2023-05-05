@@ -28,7 +28,7 @@ jobs:
         with:
           python-version: '3.9'
           cache: 'pip' # caching pip dependencies
-      - run: pip install python3-protobuf
+      - run: pip install protobuf
 
       - uses: actions/checkout@v2
       - name: Install protobuf library
