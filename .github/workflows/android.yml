@@ -24,7 +24,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+          cache: 'pip' # caching pip dependencies
+      - run: pip install python3-protobuf
+      
       - name: Install Protoc
         uses: arduino/setup-protoc@v1
 
