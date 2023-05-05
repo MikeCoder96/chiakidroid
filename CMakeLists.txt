@@ -193,7 +193,7 @@ if(CHIAKI_ENABLE_TESTS)
 endif()
 
 if(CHIAKI_ENABLE_ANDROID)
-	add_subdirectory(android/app)
+	add_subdirectory(app)
 endif()
 
 if(CHIAKI_ENABLE_BOREALIS)
