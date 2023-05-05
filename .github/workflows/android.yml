@@ -32,7 +32,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Install dependencies
         run: |
-           sudo apt install libssl-dev python3-protobuf protobuf-c-compiler libprotobuf-dev libopus-dev ffmpeg libavutil-dev libevdev-dev -y
+           sudo apt install libssl-dev protobuf-compiler python3-protobuf protobuf-c-compiler libprotobuf-dev libopus-dev ffmpeg libavutil-dev libevdev-dev -y
       
       # Set Current Date As Env Variable
       - name: Set current date as env variable
