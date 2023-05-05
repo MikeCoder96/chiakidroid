@@ -28,12 +28,11 @@ jobs:
         with:
           python-version: '3.9'
           cache: 'pip' # caching pip dependencies
-      - run: pip install protobuf
 
       - uses: actions/checkout@v2
-      - name: Install protobuf library
+      - name: Install dependencies
         run: |
-           sudo apt install protobuf-compiler -y
+           sudo apt install openssl-dev python3-protobuf protobuf-c protobuf-dev libopus-dev  ffmpeg libav-tools libavcodec-dev libavcodec57 libavdevice-dev libavdevice57 libavfilter-dev libavfilter6 libavformat-dev libavformat57 libavresample-dev libavresample3 libavutil-dev libavutil55 libpostproc-dev libpostproc54 libswresample-dev libswresample2 libswscale-dev libswscale4 libevdev-dev -y
 
       # Set Current Date As Env Variable
       - name: Set current date as env variable
