@@ -6,6 +6,10 @@ So, here the things done on the android app:
 * Touchpad Controller now fully worked
 * Disable/Enable on-screen touch commands (Find it on option window)
 * Diasable/Enable touchscreen in fullscreen (Useful if you are on docking like Kishi V2, also find it on option window)
+* Controller Vibration enabled
+* Adaptive Trigger (Incoming)
+
+Download on Relase Page (Tested and 100% working but not updated) or artifacts in Actions (Not tested but latest update) 
 
 # HOW TO CALL THE OVERLAY (This should be work on official app too)
 
