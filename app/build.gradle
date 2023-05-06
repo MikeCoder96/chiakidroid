@@ -21,7 +21,7 @@ android {
     compileSdkVersion 33
     defaultConfig {
         applicationId "com.metallic.chiaki"
-        minSdkVersion 28
+        minSdkVersion 31
         targetSdkVersion 33
         versionCode 11
         versionName chiakiVersion
