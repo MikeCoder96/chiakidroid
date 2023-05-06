@@ -39,7 +39,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Install protobuf python
         run: |
-         pip install protobuf
+         pip install protobuf==3.12.4
          python3 -c 'import google.protobuf; print(google.protobuf.__file__)'
          protoc --version
       
