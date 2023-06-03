@@ -1,4 +1,4 @@
-# chiaki-improved
+# chiakidroid
 Official repo: https://git.sr.ht/~thestr4ng3r/chiaki
 
 So, here the things done on the android app:
@@ -30,13 +30,5 @@ Hide/Show on screen buttons:
 Hide/Show touchpad on screen:
 
 ![image](https://user-images.githubusercontent.com/50410305/233785321-573d616f-991e-4eff-903b-c954de8bc427.png)
-
-
-#HOW TO CALL THE OVERLAY (This should be work on official app)
-
-Find out that the overlay can be called, right now, only when you swipe to call the navigation bar (back button, home button and windows button).
-This is because the overlay is called only when the method onSystemUiVisibilityChange is called. I will figure it out how to change it and if it is necessary.
-Video: https://www.reddit.com/r/remoteplay/comments/12mcd0r/chiaki_android_with_full_implementation_of/
-
 
 Builded with Android Studio on WSL2 (Kali-distro) 
